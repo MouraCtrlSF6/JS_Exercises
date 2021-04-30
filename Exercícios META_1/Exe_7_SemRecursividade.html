@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang=pt-BR>
+    <head>
+        <title>Exercício 7</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+            let valor = [];
+            for (let i = 0; i<10; i++){
+                valor[i] = parseFloat(prompt(`Digite o ${i+1} valor: `))
+            }
+            let Maior = Menor = valor[0];
+            for (let i = 0; i<10; i++){
+                if(valor[i] > Maior) Maior = valor[i];
+                if(valor[i] < Menor) Menor = valor[i];
+            }
+            console.log(`\nValores digitados: ${valor}\nMaior = ${Maior}\nMenor = ${Menor}`);
+        </script>
+    </body>
+</html>

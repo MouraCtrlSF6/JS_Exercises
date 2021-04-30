@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang=pt-BR>
+    <head>
+        <title>Desafio 1</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+            function Bas(a, b, c){
+                if((Math.pow(b, 2) - 4*a*c) < 0){
+                    let delta = Math.sqrt(-1*(Math.pow(b, 2) - 4*a*c))
+                    delta = delta.toFixed(1);
+                    delta = String(delta) + 'i';
+                    x_1 = `${-1*b}/${2*a} + ${delta}/${2*a}`;
+                    x_2 = `${-1*b}/${2*a} - ${delta}/${2*a}`;
+                }
+                else{
+                    x_1 = (-1*b + Math.sqrt(Math.pow(b, 2) - 4*a*c))/2*a;
+                    x_1 = x_1.toFixed(1);
+                    x_2 = (-1*b - Math.sqrt(Math.pow(b, 2) - 4*a*c))/2*a;
+                    x_2 = x_2.toFixed(1);
+                }
+                return [x_1, x_2];
+            }
+            let a = parseFloat(prompt('protótico de uma função quadrática:\nax^2 + bx + c\n\n\nDigite o a: '));
+            let b = parseFloat(prompt('protótico de uma função quadrática:\nax^2 + bx + c\n\n\nDigite o b: '));
+            let c = parseFloat(prompt('protótico de uma função quadrática:\nax^2 + bx + c\n\n\nDigite o c: '));
+            const sol = Bas(a, b, c);
+            console.log(`As raízes da funcão são: S = {${sol[0]}, ${sol[1]}}`);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang=pt-BR>
+    <head>
+        <title>Exercício 10</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+            let CA = parseFloat(prompt('Digite o comprimento do cateto adjacente ao ângulo: '));
+            while(!(CA>0)){
+                CA = parseFloat(prompt('Comprimento não válido. Insira novamente: '));
+            }
+            const CO = parseFloat(prompt('Digite o comprimento do cateto oposto ao ângulo: '));
+            while(!(CA>0)){
+                CO = parseFloat(prompt('Comprimento não válido. Insira novamente: '));
+            }
+            console.log(`A hipotenusa mede ${(Math.sqrt(Math.pow(CA, 2) + Math.pow(CO, 2))).toFixed(1)}`);
+        </script>
+    </body>
+</html>

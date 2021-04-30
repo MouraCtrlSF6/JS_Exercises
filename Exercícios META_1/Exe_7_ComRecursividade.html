@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang=pt-BR>
+    <head>
+        <title>Exercício 7</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script>
+            let valor = [];
+            function MaiorMenor(Maior, Menor, index){
+                if(index<10){
+                    if(valor[index]<Menor) Menor = valor[index];
+                    if(valor[index]>Maior) Maior = valor[index];
+                    MaiorMenor(Maior, Menor, index+1);
+                }
+                else console.log(`\nValores digitados: ${valor}\nMaior = ${Maior}\nMenor = ${Menor}`);
+            }
+            for (let i = 0; i<10; i++){
+                valor[i] = parseFloat(prompt(`Digite o ${i+1} valor: `))
+            }
+            MaiorMenor(valor[0],valor[0],0);
+        </script>
+    </body>
+</html>

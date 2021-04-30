@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang=pt-BR>
+    <head>
+        <title>Exercício 9</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <img src="./images/macaquinhos.png" style="width: 100%;">
+        <script>
+            let macaco_1 = prompt('Como está o humor do primeiro bebê macaco?\nOpções:\n * Sorridente :D\n * Carrancudo D:\n');
+            while(macaco_1 !== 'Sorridente' && macaco_1 !== 'Carrancudo'){
+                alert('Eu não dei essa opção, o espertinho(a)...');
+                macaco_1 = prompt('Como está o humor do primeiro bebê macaco?\nOpções:\n * Sorridente :D\n * Carrancudo D:\n');
+            }
+            let macaco_2 = prompt('Como está o humor do segundo bebê macaco?\nOpções:\n * Sorridente :D\n * Carrancudo D:\n');
+            while(macaco_2 !== 'Sorridente' && macaco_2 !== 'Carrancudo'){
+                alert('Eu não dei essa opção, o espertinho(a)...');
+                macaco_2 = prompt('Como está o humor do segundo bebê macaco?\nOpções:\n * Sorridente :D\n * Carrancudo D:\n');
+            }
+            if(macaco_1 === macaco_2) console.log('ELES ESTÃO BRIGANDO!');
+            else console.log('Ufa, eles não estão brigando.');
+        </script>
+    </body>
+</html>
