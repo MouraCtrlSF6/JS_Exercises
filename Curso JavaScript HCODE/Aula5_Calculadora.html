@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+</head>
+<body>
+    <script>
+        function myCalculator(a, b, operator){
+            return eval(`${a} ${operator} ${b}`);//This function will convert a string into a script. In this case, into a calc
+        }
+        const a = parseFloat(prompt('Type the first value:\n'))
+        const b = parseFloat(prompt('Type the second value:\n'));
+        const operator = prompt('Type the operation to be done for these values:\n');
+        console.log(`Result: ${myCalculator(a, b, operator)}`);
+    </script>
+</body>
+</html>
