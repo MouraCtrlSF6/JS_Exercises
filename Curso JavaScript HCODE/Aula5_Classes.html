@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classes</title>
+</head>
+<body>
+    <script>
+        class Calculator {
+            constructor (var_1, var_2, operation) {
+                this.var_1 = var_1;
+                this.var_2 = var_2;
+                this.operation = operation;
+            }
+            Calculate(){
+                return eval(`${this.var_1} ${this.operation} ${this.var_2}`);
+            }
+        }
+        const a = parseFloat(prompt('Digite o primeiro valor: '));
+        const b = parseFloat(prompt('Digite o segundo valor: '));
+        const op = prompt('Digite a operação a ser feita entre os valores: ');
+        let myCalculator = new Calculator(a, b, op);
+        console.log(`Resultado = ${myCalculator.Calculate()}`);
+    </script>
+</body>
+</html>
