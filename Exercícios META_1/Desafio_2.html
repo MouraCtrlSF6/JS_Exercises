@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>  
+        let numbersUntil = () => {
+            let myNumbers = [];
+            for (let i = 2; i<num+1; i++){
+                myNumbers[i-2] = i; 
+            }
+            return myNumbers
+        }
+
+        let isLastPrime = () => {
+            let myPrimes = numbersUntil(num);
+            for (let divisor of myPrimes){
+                if (divisor !== 'Out'){
+                    for (let index = myPrimes.indexOf(divisor) + 1; index < myPrimes.length; index++){
+                        if (myPrimes[index]%divisor === 0 && myPrimes[index] !== 'Out') myPrimes[index] = 'Out'; 
+                    }
+                }      
+            }
+            return myPrimes[num-2] !== 'Out';
+        }
+
+        const num = parseInt(prompt('Digite um número: '));
+        if(isLastPrime(num)) console.log(`Sim! ${num} é um número primo.`);
+        else console.log(`Não. ${num} não é um número primo.`);
+    </script>
+</body>
+</html>
