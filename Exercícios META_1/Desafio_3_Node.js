@@ -26,11 +26,15 @@ let myPrimeList = () => {
 }
 
 const num = parseInt(process.argv.slice(2));
-try{
-    if(myPrimeList(num).length < 1) throw (e);
-    console.clear();
-    console.log(`Os números primos até ${num} são: ${myPrimeList(num).toString()}\n`);
-} catch(e){
-    console.clear();
-    console.log(`Não há fatoriais até ${num}\n`);
+console.clear();
+switch(true){
+    case process.argv.slice(2).length < 1:
+        console.log(`Junto a abertura do arquivo, digite um número conforme o exemplo:`);
+        console.log(`node .\\Desafio_3_Node.js 100\n`);
+        break;
+    case myPrimeList(num).length < 1:
+        console.log(`Não há números primos positivos até ${num}.\n`);
+        break;
+    default:
+        console.log(`Os números primos até ${num} são:\n${myPrimeList(num).toString()}\n`);
 }
