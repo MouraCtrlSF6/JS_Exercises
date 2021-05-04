@@ -17,12 +17,8 @@ let myPrimeList = (num) => {
             }
         }      
     }
-    for (let elements of myPrimes){
-        if (elements !== 'Out'){
-            myPrimesOnly[i] = elements;
-            i++;
-        }  
-    }  return myPrimesOnly;
+    myPrimesOnly = myPrimes.filter(myPrimes => myPrimes!=='Out'); 
+    return myPrimesOnly;
 }
 
 console.clear();
