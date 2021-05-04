@@ -7,11 +7,10 @@
     <body>
         <script>
             let valor = [];
-            for (let i = 0; i<10; i++){
-                valor[i] = parseFloat(prompt(`Digite o ${i+1} valor: `))
-            }
+            valor[0] = parseFloat(prompt(`Digite o ${1} valor: `));;
             let Maior = Menor = valor[0];
-            for (let i = 0; i<10; i++){
+            for (let i = 1; i<10; i++){
+                valor[i] = parseFloat(prompt(`Digite o ${i+1} valor: `));
                 if(valor[i] > Maior) Maior = valor[i];
                 if(valor[i] < Menor) Menor = valor[i];
             }
