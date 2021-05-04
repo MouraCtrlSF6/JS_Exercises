@@ -17,12 +17,8 @@ let myPrimeList = () => {
             }
         }      
     }
-    for (let elements of myPrimes){
-        if (elements !== 'Out'){
-            myPrimesOnly[i] = elements;
-            i++;
-        }  
-    }  return myPrimesOnly;
+    myPrimesOnly = myPrimes.filter(myPrimes => myPrimes!=='Out'); 
+    return myPrimesOnly;
 }
 
 const num = parseInt(process.argv.slice(2));
