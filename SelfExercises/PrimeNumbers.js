@@ -31,7 +31,7 @@ function isPrime(num, myPrimes){
 }
 
 console.clear();
-const myPrimes = [2, 3, 7, 11, 13, 19, 23];
+const myPrimes = [2, 3, 7, 11, 13, 17, 19, 23];
 process.stdout.write('Type a number: ');
 process.stdin.on('readable', ()=>{
     const num = parseInt(process.stdin.read());
