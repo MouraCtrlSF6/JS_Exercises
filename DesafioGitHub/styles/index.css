@@ -1,0 +1,26 @@
+body {
+    background-color: lightgray;
+}
+#main{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 50%;
+
+    text-align: center;
+}
+.loginField{
+    margin: 10px;
+    width: 70%;
+    height: 30px;
+}
+input[type=submit]{
+    border-color: 1px solid lightgray;
+    border-radius: 10px;
+}
+a{
+    color: black
+}
