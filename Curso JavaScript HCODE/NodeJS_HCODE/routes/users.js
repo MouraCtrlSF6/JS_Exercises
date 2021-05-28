@@ -104,8 +104,8 @@ module.exports = Route => {
 
             if(!newUserData.name || !newUserData.password || !newUserData.email){
                 return response 
-                .status(200)
-                .json({ status: 200, message: 'Required data not provided!'});  
+                .status(400)
+                .json({ status: 400, message: 'Required data not provided!'});  
             }
             return response 
                     .status(200)
@@ -115,27 +115,6 @@ module.exports = Route => {
             )});
         });
     });
-
-    //Ta errado por enquato
-    // Route.delete((request, response) => {
-    //     db.remove({name: request.body.name}, (error, user) => {
-    //         if(error){
-    //             console.log(error);
-    //         }
-    //         else if(!user){
-    //             response
-    //                 .status(404)
-    //                 .json({status: 404, message: 'User not found!'})
-    //         }
-    //         else {
-    //             console.log(user);
-    //             response
-    //                 .status(200)
-    //                 .json({status: 200, message: 'User removed successfully'});
-    //         }
-    //     });
-    // });
-
     // Admin path
     Route.get(`${prefix}/admin`, (request, response) => {
         response.statusCode = 200;
