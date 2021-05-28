@@ -7,5 +7,5 @@ formRegister.addEventListener('submit', event => {
     const newUser = new User(userName.value, userPassword.value);
     
     newUser.storeUser();
-    window.location.href = './index.html';
+    window.location.href = './views/index.html';
 });
