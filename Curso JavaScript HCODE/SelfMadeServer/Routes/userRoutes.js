@@ -2,21 +2,18 @@ const userController = require('../Controllers/userController.js');
 
 module.exports = app => {
     const Route = app.route('/users');
+    const SearchRoute = app.route('/users/:id');
 
     Route.get((request, response) => {
-        const method = new userController().getAllUsers(request, response);
-        return method;
+        new userController(request, response).getAllUsers();
     }); 
     Route.post((request, response) => {
-        const method = new userController().storeUser(request, response);
-        return method;
+        new userController(request, response).storeUser();
     });
-    Route.put((request, response) => {
-        const method = new userController().updateUser(request, response);
-        return method;
-    })
-    Route.delete((request, response) => {
-        const method = new userController().removeUser(request, response);
-        return method;
-    })
+    SearchRoute.put((request, response) => {
+        new userController(request, response).updateUser();
+    });
+    SearchRoute.delete((request, response) => {
+        new userController(request, response).removeUser();
+    });
 }
