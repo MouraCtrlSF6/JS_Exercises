@@ -115,6 +115,19 @@ module.exports = Route => {
             )});
         });
     });
+    Route.delete(`${prefix}`,(request, response) => {
+        myDatabase.remove({ _id: request.params.id }, {}, (error) => {
+            if(error){
+                console.log(error);
+            }
+            else {
+                response
+                    .status(200)
+                    .json({ status: 200, message: 'Users removed successfully' });
+            }
+        })
+    });
+
     // Admin path
     Route.get(`${prefix}/admin`, (request, response) => {
         response.statusCode = 200;
