@@ -1,0 +1,19 @@
+-- CREATE TABLE users (
+--   id SERIAL PRIMARY KEY,
+--   name VARCHAR(255) NOT NULL,
+--   email VARCHAR(255)  NOT NULL,
+--   password VARCHAR(255) NOT NULL,
+--   role VARCHAR(255) NOT NULL,
+--   description VARCHAR(255)
+-- );
+
+-- UPDATE 
+--   users
+-- SET 
+--   name = 'Jorginho',
+--   email = 'lucassiyahoo.com.br@gmail.com',
+--   password = '@Senha123',
+--   role = 'admin/lucas',
+--   description = 'This user has been updated'
+-- WHERE 
+--   id = 2
