@@ -11,8 +11,10 @@ Technologies used:
 
 Databases:
 - NeDB
+- PostgreSQL
 
 Languages:
 - Javascript
 - HTML5
 - CSS3
+- SQL
