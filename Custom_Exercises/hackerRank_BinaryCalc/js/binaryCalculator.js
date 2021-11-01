@@ -101,5 +101,3 @@ class BinaryCalculator {
 }
 
 const app = new BinaryCalculator()
-
-console.dir(app)
