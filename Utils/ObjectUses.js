@@ -18,18 +18,15 @@ class ObjectUses {
   }
   
   static cloneObj(myObj) {
-    const newObj = {}
-    Object.keys(myObj).forEach(item => {
-      if(Array.isArray(myObj[item])) {
-        newObj[item] = ObjectUses.cloneArray(myObj[item])
+    return ObjectUses.mapper(myObj, (value) => {
+      if(Array.isArray(value)) {
+        return ObjectUses.cloneArray(value)
       }
-      else if(typeof myObj[item] === 'object') {
-        newObj[item] = ObjectUses.cloneObj(myObj[item])
+      if(typeof value === 'object') {
+        return ObjectUses.cloneObj(value)
       }
-      else newObj[item] = myObj[item]
+      return value
     })
-  
-    return newObj
   }
   
   // Return a copy of an object, with the same content, 
