@@ -6,27 +6,11 @@ class ObjectUses {
   }
 
   static cloneArray(myArray) {
-    return myArray.map(item => {
-      if(Array.isArray(item)) {
-        return ObjectUses.cloneArray(item)
-      } 
-      if(typeof item === 'object') {
-        return ObjectUses.cloneObj(item)
-      }
-      return item
-    })
+    return myArray.map(item => ObjectUses.deepClone(item))
   }
   
   static cloneObj(myObj) {
-    return ObjectUses.mapper(myObj, (value) => {
-      if(Array.isArray(value)) {
-        return ObjectUses.cloneArray(value)
-      }
-      if(typeof value === 'object') {
-        return ObjectUses.cloneObj(value)
-      }
-      return value
-    })
+    return ObjectUses.mapper(myObj, value => ObjectUses.deepClone(value))
   }
   
   // Return a copy of an object, with the same content, 
@@ -44,6 +28,10 @@ class ObjectUses {
   // Some as Array.map(), but functional for all types of
   // objects.
   static mapper(obj, callback) {
+    if(typeof obj !== 'object') {
+      throw new Error(`'${obj}' is not an object.`)
+    }
+    
     const newObj = new Object()
 
     for(let [value, key] of Object.entries(obj).map(item => item.reverse())) {
