@@ -43,6 +43,17 @@ class ObjectUses {
     }
     return original;
   }
+  
+  // Some as Array.map(), but functional for all types of
+  // objects.
+  static mapper(obj, callback) {
+    const newObj = new Object()
+
+    for(let [value, key] of Object.entries(obj).map(item => item.reverse())) {
+      newObj[key] = callback(value, key, obj)
+    }
+    return newObj
+  } 
 }
 
 module.exports = ObjectUses
