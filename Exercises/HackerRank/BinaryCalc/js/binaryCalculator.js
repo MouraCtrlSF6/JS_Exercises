@@ -1,7 +1,5 @@
-const divs = document.querySelectorAll('div')
-
 class BinaryCalculator {
-  constructor() {
+  constructor(divs) {
     this.calculator = new Array('', '', '')
     this.turnCounter = 0
     this.displayEl = divs[0]
@@ -100,4 +98,4 @@ class BinaryCalculator {
   }
 }
 
-const app = new BinaryCalculator()
+export default BinaryCalculator
