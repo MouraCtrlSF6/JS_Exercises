@@ -1,42 +1,40 @@
-function primeList(myPrimes){
-    let i = myPrimes[(myPrimes.length) - 1];
-    while(true){
-        i++;
-        for (let currentPrime of myPrimes){
-            if(i%currentPrime > parseInt(i/currentPrime)){
-                myPrimes.push(i);
-                return myPrimes;
-            }
-            if(i%currentPrime === 0){
-                break;
-            }
-        }
+function generateNextPrime(myPrimes) {
+  let lastKnown = myPrimes[(myPrimes.length) - 1];
+
+  while (true) {
+    lastKnown += 1
+
+    for (let currentPrime of myPrimes) {
+      if (!(lastKnown % currentPrime)) {
+        break;
+      }
+      if (lastKnown % currentPrime > parseInt(i / currentPrime)) {
+        return lastKnown
+      }
     }
+  }
 }
 
-function isPrime(num, myPrimes){
-    let myLastPrime = myPrimes[(myPrimes.length) - 1];
-    for (let currentPrime of myPrimes){
-        if (num%currentPrime > parseInt(num/currentPrime)){
-            return true;
-        }
-        if (num%currentPrime === 0 && num !== currentPrime){
-            return false;
-        }
-        if (currentPrime >= myLastPrime){
-            myPrimes = primeList(myPrimes);
-            myLastPrime = myPrimes[(myPrimes.length) - 1];
-        }
+function isPrime(num) {
+  const myPrimes = [2, 3, 5]
+
+  for (let [index, prime] of Object.entries(myPrimes)) {
+    if (num % prime > parseInt(num / prime)) {
+      return true;
     }
+    if (num % prime === 0 && num !== prime) {
+      return false;
+    }
+    if (index === myPrimes.length - 1) {
+      myPrimes.push(generateNextPrime(myPrimes))
+    }
+  }
 }
 
 console.clear();
-const myPrimes = [2, 3, 7, 11, 13, 17, 19, 23];
+
 process.stdout.write('Type a number: ');
-process.stdin.on('readable', ()=>{
-    const num = parseInt(process.stdin.read());
-    if (isPrime(num, myPrimes)){
-        console.log(`Yes, ${num} is prime`);
-    }
-    else console.log(`No, ${num} is not prime`);
+process.stdin.on('readable', () => {
+  const num = parseInt(process.stdin.read());
+  console.log(isPrime(Number(num)) ? `Yes, ${num} is prime` : `No, ${num} is not prime`)
 })
