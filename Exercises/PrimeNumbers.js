@@ -8,7 +8,7 @@ function generateNextPrime(myPrimes) {
       if (!(lastKnown % currentPrime)) {
         break;
       }
-      if (lastKnown % currentPrime > parseInt(i / currentPrime)) {
+      if (lastKnown % currentPrime > parseInt(lastKnown / currentPrime)) {
         return lastKnown
       }
     }
@@ -18,14 +18,14 @@ function generateNextPrime(myPrimes) {
 function isPrime(num) {
   const myPrimes = [2, 3, 5]
 
-  for (let [index, prime] of Object.entries(myPrimes)) {
+  for (let prime of myPrimes) {
     if (num % prime > parseInt(num / prime)) {
       return true;
     }
     if (num % prime === 0 && num !== prime) {
       return false;
     }
-    if (index === myPrimes.length - 1) {
+    if (myPrimes.indexOf(prime) == myPrimes.length - 1) {
       myPrimes.push(generateNextPrime(myPrimes))
     }
   }
