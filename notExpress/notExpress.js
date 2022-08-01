@@ -1,49 +1,82 @@
-module.exports = function (request, response) {
+function notExpress(request, response) {
   const methods = {
-    get: (route, callback) => {
-      if(validate(request, route, "GET")) {
-        exec(callback, request, response);
-        return;
-      }
-    },
-    post: (route, callback) => {
-      if(validate(request, route, "POST")) {
-        exec(callback, request, response);
-        return;
-      }
-    },
-    put: (route, callback) => {
-      if(validate(request, route, "PUT")) {
-        exec(callback, request, response);
-        return;
-      }
-    },
-    delete: (route, callback) => {
-      if(validate(request, route, "DELETE")) {
-        exec(callback, request, response);
-        return;
-      }
-    },
+    GET: "get",
+    POST: "post", 
+    PUT: "put", 
+    DELETE: "delete"
   };
 
-  function validate({ url, method }, route, routeMethod) {
-    return url == route && method == routeMethod;
-  }
-  
-  function exec(callback, request, response) {
-    const payload = callback(request, response);
-  
-    response.write(
-      typeof(payload) == "string"
-        ? payload
-        : JSON.stringify(payload)
-    );
-  
-    response.end();
+  const specifics = {
+    method: null,
+    route: null
+  };
+
+  const validations = [
+    {
+      name: "Wrong method",
+      exec: () => {
+        return request.method.toLowerCase() == specifics.method;
+      }
+    },
+    { 
+      name: "Wrong route",
+      exec: () => {
+        return request.url == specifics.route;
+      }
+    }
+  ]
+
+  function validate(route, method) {
+    [specifics.route, specifics.method] = [route, method];
+    const errors = validations.filter(validation => !validation.exec());
+    return !errors.length;
   }
 
-  return methods;
+  function implementation(route, method, callback) {
+    if(!validate(route, method)) {
+      response.end();
+      return;
+    }
+    const payload = callback(request, response);
+    const format = typeof(payload) == "string"
+      ? payload
+      : JSON.stringify(payload)
+    
+    response.write(format);
+    response.end();
+    return;
+  }
+
+  function get(route, callback) {
+    implementation(route, methods.GET, callback);
+    return;
+  }
+
+  function post(route, callback) {
+    implementation(route, methods.POST, callback);
+    return;
+  }
+
+  function put(route, callback) {
+    implementation(route, methods.PUT, callback);
+    return;
+  }
+
+  function remove(route, callback) {
+    implementation(route, methods.DELETE, callback);
+    return;
+  }
+
+  const callables = {
+    get,
+    post, 
+    put,
+    remove
+  };
+
+  return callables;
 }
 
+module.exports = notExpress;
 
 
